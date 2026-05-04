@@ -1,0 +1,28 @@
+#include <iostream>
+#include <vector>
+#include <unordered_set>
+using namespace std;
+
+class Solution {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        unordered_set<int> s1(nums1.begin(), nums1.end());
+        unordered_set<int> result;
+
+        for(int x : nums2) {
+            if(s1.count(x))
+                result.insert(x);
+        }
+        return vector<int>(result.begin(), result.end());
+    }
+};
+
+int main() {
+    vector<int> a = {1,2,2,1};
+    vector<int> b = {2,2};
+
+    Solution obj;
+    vector<int> ans = obj.intersection(a,b);
+
+    for(int x:ans) cout<<x<<" ";
+}
